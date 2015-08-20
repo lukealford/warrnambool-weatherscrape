@@ -8,6 +8,8 @@
 
 ##Running
 > node forcast.js
+
 for a 7 day forecast
 > node currentTemp.js
+
 for current, tonight & tomorrow temp
