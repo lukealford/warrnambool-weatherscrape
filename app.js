@@ -1,3 +1,7 @@
+var url =[]
+
+var Model = require('./model');
+
 //requirements
 var http = require("http");
 var fs = require("fs");
@@ -37,12 +41,12 @@ download(url, function(data) {
       var max = $(e).find(".max").text();
       //put data into array
       var forecastDay ={
-        day: day,
-        summary: summary,
-        rain: rain,
-        rainchance: rainchance,
-        min: min,
-        max: max
+        day: day.trim().split('\n'),
+        summary: summary.trim().split('\n'),
+        rain: rain.trim().split('\n'),
+        rainchance: rainchance.trim().split('\n'),
+        min: min.trim().split('\n'),
+        max: max.trim().split('\n')
       };
      //stringify and parse it!
      var s = JSON.stringify(forecastDay);
@@ -57,4 +61,12 @@ download(url, function(data) {
      console.log( "Maximum of:",p.max);
     });
   }
+    download('complete', function (forecasts) {
+    forecastDay = new Model(forecasts);
+    model.save(function(err) {
+      if (err) {
+        console.log('Database err saving: ' + url);
+      }
+    });
+  });
 });

@@ -7,7 +7,7 @@
 * [cheerio](https://www.npmjs.com/package/cheerio)
 
 ##Running
-> node forcast.js
+> node app.js
 
 for a 7 day forecast
 > node currentTemp.js
